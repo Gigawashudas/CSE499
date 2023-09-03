@@ -105,7 +105,6 @@
                                                     <li><a href="tournaments.html">BBL</a></li>
                                                     <li><a href="tournaments.html">WBBL</a></li>
                                                     <li><a href="tournaments.html">T20 Blast</a></li>
-                                                    <li><a href="tournaments.html">CSA T20</a></li>
                                                     <li><a href="tournaments.html">PSL</a></li>
                                                     <li><a href="tournaments.html">LPL</a></li>
                                                     <li><a href="tournaments.html">CPL</a></li>
@@ -130,7 +129,7 @@
 
   
     <!--site-main start-->
-    <div class="site-main" style="height: 100vh;">
+    <div class="site-main" >
         <section class="ttm-row team-section pb-105 clearfix">
             <div class="container">
                <!-- row -->
@@ -148,7 +147,199 @@
                </div><!-- row end -->
                <!-- row -->
                <div class="row">
-                   
+                    <div class="col-lg-12 text-center">
+                        <ul class="nav nav-pills justify-content-center mb-3 " id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fa fa-book"></i> First Innings Score</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fa fa-book"></i> First Innings Win</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fa fa-book"></i> Second Innings Win</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 m-auto">
+                                        <form action="" class="row">
+                                            <div class="col-lg-12 form-group">
+                                                <h2>First Innings Srore Probability</h2>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Select Gender:</label>
+                                                <select name="gender" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="male" selected>Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="">Select Batting Team:</label>
+                                                <select name="batting_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="Bangladesh" selected>Bangladesh</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="">Select Bowling Team:</label>
+                                                <select name="bowling_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="India" selected>India</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Select Venue:</label>
+                                                <select name="bowling_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="Mirpur" selected>Mirpur</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label for="">Current Score:</label>
+                                                <input type="number" min="0" value="100" class="form-control" name="current_score" >
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label for="">Balls:</label>
+                                                <input type="number" min="0" value="65.00" class="form-control" name="current_score" >
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label for="">Wickets:</label>
+                                                <input type="number" min="0" value="2.00" class="form-control" name="current_score" >
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button type="submit" class="button btn-info">Prediction</button>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12 form-group mt-10">
+                                                <h4>Predicted Score: 154 to 164 runs</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 m-auto">
+                                        <form action="" class="row">
+                                            <div class="col-lg-12 form-group">
+                                                <h2>First Innings Win Probability</h2>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Select Gender:</label>
+                                                <select name="gender" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="male" selected>Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="">Select Batting Team:</label>
+                                                <select name="batting_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="Bangladesh" selected>Bangladesh</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="">Select Bowling Team:</label>
+                                                <select name="bowling_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="India" selected>India</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Select Venue:</label>
+                                                <select name="bowling_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="Mirpur" selected>Mirpur</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Total Score:</label>
+                                                <input type="number" min="0" value="160" class="form-control" name="current_score" >
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button type="submit" class="button btn-info">Prediction</button>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12 form-group mt-10">
+                                                <h4>Win Probability: Bangladesh - 70% : 30% India</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 m-auto">
+                                        <form action="" class="row">
+                                            <div class="col-lg-12 form-group">
+                                                <h2>Second Innings Win Probability</h2>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Select Gender:</label>
+                                                <select name="gender" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="male" selected>Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="">Select Batting Team:</label>
+                                                <select name="batting_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="Bangladesh" selected>Bangladesh</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label for="">Select Bowling Team:</label>
+                                                <select name="bowling_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="India" selected>India</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="">Select Venue:</label>
+                                                <select name="bowling_team" id="" class="form-control">
+                                                    <option value=""> -- Select -- </option>
+                                                    <option value="Mirpur" selected>Mirpur</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3 form-group">
+                                                <label for="">Runs Left:</label>
+                                                <input type="number" min="0" value="72.00" class="form-control">
+                                            </div>
+                                            <div class="col-lg-3 form-group">
+                                                <label for="">Balls Left:</label>
+                                                <input type="number" min="0" value="38.00" class="form-control">
+                                            </div>
+                                            <div class="col-lg-3 form-group">
+                                                <label for="">Wickets Left:</label>
+                                                <input type="number" min="0" value="8.00" class="form-control">
+                                            </div>
+                                            <div class="col-lg-3 form-group">
+                                                <label for="">Target Score:</label>
+                                                <input type="number" min="0" value="160" class="form-control">
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button type="submit" class="button btn-info">Prediction</button>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12 form-group mt-10">
+                                                <h4>Win Probability: Bangladesh - 40% : 60% India</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                </div>
            </div>
         </section>
