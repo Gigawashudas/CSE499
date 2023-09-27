@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} Sign Up || T-20 Predictor {% endblock title %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+
+    <!--site-main start-->
+    <div class="site-main">
+        <section class="ttm-row team-section ttm-bg ttm-bgimage-yes ttm-bgcolor-darkgrey h-100 clearfix">
+            <div class="container">
+               <div class="row">
+                    <div class="col-md-7 m-auto">
+                        <div class="spacing-4 ttm-bgcolor-white">
+                            <!-- section title -->
+                            <div class="section-title with-desc text-center clearfix">
+                                <div class="title-header">
+                                    <h2 class="title ttm-textcolor-skincolor" style="color: #0D3B4A;">Sign Up</h2>
+                                </div>
+                            </div><!-- section title end -->
+                            <form id="ttm-make-appoint-form" class="ttm-make-appoint-form wrap-form mt_15 clearfix" method="post" action="#">
+
+                                {% csrf_token %}
+
+                                {{form | crispy}}
+
+                                <input name="submit" type="submit" id="submit" class="submit" value="Sign Up Now">
+                                <h6 class="p-4 text-center"><a href="{% url 'account:login' %}">Already have an account? Login</a></h6>
+                            </form>
+
+                        </div>
+                    </div>
+               </div>
+           </div>
+        </section>
+    </div>
+<!--site-main end-->
+
+
+{% endblock %}

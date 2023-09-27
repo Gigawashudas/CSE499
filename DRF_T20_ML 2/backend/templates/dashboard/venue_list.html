@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body %}
+
+
+<!--  BEGIN MAIN CONTAINER  -->
+    <div class="main-container sidebar-closed sbar-open" id="container">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+
+
+        {% include 'dashboard/sidebar.html' %}
+
+        <!--  BEGIN CONTENT AREA  -->
+        <div id="content" class="main-content">
+            <div class="layout-px-spacing">
+
+                {% if messages %}
+					{% for msg in messages %}
+
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						  <strong>Hey!</strong> {{ msg }}.
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+
+					{% endfor %}
+                {% endif %}
+
+                <div class="row layout-spacing">
+                    <div class="col-lg-12">
+
+                        <div class="layout-spacing">
+                            <br>
+                            <a class="btn btn-primary" href="{% url 'dashboard:add_new_venue' %}">Add New Venue</a>
+                        </div>
+
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-content widget-content-area">
+                                <table id="style-3" class="table style-3  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkbox-column"> Record Id </th>
+                                            <th>Venue Name</th>
+                                            <th>Belongs To</th>
+                                            <th class="text-center dt-no-sorting">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for venue in venues %}
+
+                                        <tr>
+                                            <td class="checkbox-column"> {{venue.id}} </td>
+                                            <td>{{venue.city}}</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <p> {{venue.tournament.name}} </p>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <ul class="table-controls">
+                                                    <li><a href="{% url 'dashboard:venue_update' venue.pk %}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-6 mb-1"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></li>
+                                                    <li><a href="{% url 'dashboard:venue_delete' venue.pk %}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-6 mb-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></li>
+                                                </ul>
+                                            </td>
+                                            </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--  END CONTENT AREA  -->
+    </div>
+
+
+{% endblock body %}
+
+
