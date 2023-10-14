@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %} Prediction || T-20 Predictor {% endblock title %}
+
+{% load tournaments %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<!--site-main start-->
+    <div class="site-main" >
+        <section class="ttm-row team-section pb-105 clearfix">
+            <div class="container">
+               <!-- row -->
+               <div class="row">
+                   <div class="col-lg-10 col-md-10">
+                       <!-- section-title -->
+                       <div class="section-title with-desc clearfix">
+                           <div class="title-header">
+                               <h5>Tournaments</h5>
+                               <h2 class="title">Our Tournament</h2>
+                           </div>
+                       </div><!-- section-title end -->
+                   </div>
+                   <div class="col-lg-2 col-md-2"></div>
+               </div><!-- row end -->
+               <!-- row -->
+               <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <ul class="nav nav-pills justify-content-center mb-3 " id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="btn btn-info" href="{% url 'tournament:score-prediction-form' pk=tournament.id %}" role="button"><i class="fa fa-book"></i> First Innings Score</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="btn btn-outline-secondary" href="{% url 'tournament:first-prediction-form' pk=tournament.id %}" role="button"><i class="fa fa-book"></i> First Innings Win</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="btn btn-outline-secondary" href="{% url 'tournament:second-prediction-form' pk=tournament.id %}" role="button"><i class="fa fa-book"></i> Second Innings Win</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="row">
+                                    <div class="col-lg-6 m-auto">
+                                        <form action="" class="row" method="post">
+
+                                            {% csrf_token %}
+
+                                            <div class="col-lg-12 form-group">
+                                                <h2>Score Probability</h2>
+                                            </div>
+
+                                            <div class="col-lg-6 form-group">
+                                                <label>Select Batting Team *:</label>
+                                                <select name="batting_team" class="form-control" required>
+                                                    <option value=""> -- Select -- </option>
+                                                    {% for team in teams %}
+                                                        <option value="{{team.team}}">{{team.team}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label>Select Bowling Team *:</label>
+                                                <select name="bowling_team" class="form-control" required>
+                                                    <option value=""> -- Select -- </option>
+                                                    {% for team in teams %}
+                                                        <option value="{{team.team}}">{{team.team}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label>Select Venue *:</label>
+                                                <select name="city" class="form-control" required>
+                                                    <option value=""> -- Select -- </option>
+                                                    {% for venue in venues %}
+                                                        <option value="{{venue.city}}">{{venue.city}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label>Current Score *:</label>
+                                                <input name="current_score" type="number" min="0" value="0" class="form-control" required>
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label>Running Overs *:</label>
+                                                <input name="current_over" type="number" min="0" value="0" max="19" class="form-control" required>
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label>Balls *:</label>
+                                                <input name="current_ball" type="number" min="0" value="0" max="6" class="form-control" required>
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label>Wickets *:</label>
+                                                <input name="wickets" type="number" min="0" max="9" value="0" class="form-control" required>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <button type="submit" class="button btn-info">Prediction</button>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-lg-12 form-group mt-10">
+                                                {% if upper_limit %}
+                                                    <h4>Predicted Score: {{lower_limit}} to {{upper_limit}} runs</h4>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+               </div>
+           </div>
+        </section>
+    </div>
+    <!--site-main end-->
+
+
+{% endblock %}

@@ -98,6 +98,15 @@
                     <div class="col-lg-7">
                        <div class="ttm-col-bgcolor-yes ttm-bg ttm-bgcolor-grey spacing-8">
                             <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
+
+                            <div class="container">
+                              {% if messages %}
+                                  {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}">{{message}}</div>
+                                  {% endfor %}
+                              {% endif %}
+                            </div>
+
                             <!-- section title -->
                             <div class="section-title with-desc clearfix">
                                 <div class="title-header">
@@ -107,17 +116,28 @@
                                 <div class="title-desc">Your feedback matters. Write to us if you have any queries or suggestions regarding any things about us.</div>
                             </div><!-- section title end -->
                             <form id="ttm-contactform" class="ttm-contactform wrap-form clearfix" method="post" action="#">
+
+                                {% csrf_token %}
+
                                 <label>
-                                    <span class="text-input"><i class="ttm-textcolor-skincolor ti-user"></i><input name="your-name" type="text" value="" placeholder="Your Name" required="required"></span>
+                                    <span class="text-input">
+                                        {{ form.full_name|as_crispy_field }}
+                                    </span>
                                 </label>
                                 <label>
-                                    <span class="text-input"><i class="ttm-textcolor-skincolor ti-email"></i><input name="email" type="email" value="" placeholder="Email" required="required"></span>
+                                    <span class="text-input">
+                                        {{ form.email|as_crispy_field }}
+                                    </span>
                                 </label>
                                 <label>
-                                    <span class="text-input"><i class="ttm-textcolor-skincolor ti-book"></i><input name="subject" type="text" value="" placeholder="Subject" required="required"></span>
+                                    <span class="text-input">
+                                        {{ form.subject|as_crispy_field }}
+                                    </span>
                                 </label>
                                 <label>
-                                    <span class="text-input"><i class="ttm-textcolor-skincolor ti-comment"></i><textarea name="message" cols="40" rows="3" placeholder="Message" required="required"></textarea></span>
+                                    <span class="text-input">
+                                            {{ form.message|as_crispy_field }}
+                                    </span>
                                 </label>
                                 <input name="submit" type="submit" id="submit" class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-black" value="SEND MESSAGE">
                             </form>

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load tournaments %}
     {% load static %}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,6 +99,12 @@
                                             <li>
                                                 <a href="">Tournaments</a>
                                                 <ul>
+                                                    {% for tour in request|tournaments %}
+                                                        <li><a href="{% url 'tournament:score-prediction-form' pk=tour.id %}">{{tour.name}}</a></li>
+                                                    {% endfor %}
+
+                                                    {% if request.user.is_authenticated %}
+
                                                     <li><a href="">Men's T20 International</a></li>
                                                     <li><a href="">Women's T20 International</a></li>
                                                     <li><a href="">BPL</a></li>
@@ -112,11 +119,13 @@
                                                     <li><a href="">Women's Super Smash</a></li>
                                                     <li><a href="">CSA T20</a></li>
 						                            <li><a href="">WCSL</a></li>
+
+                                                    {% endif %}
+
                                                 </ul>
                                             </li>
                                             {% if request.user.is_authenticated %}
                                                 <li><a href="{% url 'account:profile' %}">Profile</a></li>
-                                                <li><a href="{% url 'account:logout' %}">Sign Out</a></li>
                                             {% else %}
                                                 <li><a href="{% url 'account:login' %}">Log In</a></li>
                                             {% endif %}
@@ -124,9 +133,12 @@
                                                 <a href="">Others</a>
                                                 <ul>
                                                     <li><a href="{% url 'faq:faq' %}">Frequently Asked Questions</a></li>
-                                                    <li><a href="">About Us</a></li>
+                                                    <li><a href="{% url 'tournament:about_us' %}">About Us</a></li>
                                                     <li><a href="{% url 'contactus:contactus_form' %}">Contact Us</a></li>
                                                     <li><a href="{% url 'tournament:download' %}">Download</a></li>
+                                                    {% if request.user.is_authenticated %}
+                                                        <li><a href="{% url 'account:logout' %}">Sign Out</a></li>
+                                                    {% endif %}
                                                 </ul>
                                             </li>
                                             {% if request.user.is_superuser %}

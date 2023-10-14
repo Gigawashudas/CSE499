@@ -43,6 +43,7 @@
                                     <thead>
                                         <tr>
                                             <th class="checkbox-column"> Record Id </th>
+                                            <th class="text-center">Image</th>
                                             <th>Tournament Name</th>
 <!--                                            <th>Status</th>-->
                                             <th>About</th>
@@ -55,6 +56,9 @@
 
                                         <tr>
                                             <td class="checkbox-column"> {{tournament.id}} </td>
+                                            <td class="text-center">
+                                                <span><img src="http://127.0.0.1:8000/{{ tournament.image }}" class="profile-img" alt="avatar" width="30" height="30"></span>
+                                            </td>
                                             <td>
                                                 {{tournament.name}}
                                             </td>

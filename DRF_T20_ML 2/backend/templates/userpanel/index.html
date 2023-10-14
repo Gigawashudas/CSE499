@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Home || T-20 Predictor {% endblock title %}
 
+{% load tournaments %}
 {% load static %}
 
 {% block body %}
@@ -21,6 +22,27 @@
                                 </div><!-- section title end -->
                             </div>
                         </div>
+
+                        {% for tournament in request|tournaments %}
+
+                            <div class="col-lg-3 col-md-4">
+                                <div class="client-box ttm-box-view-logo">
+                                    <div class="ttm-client-logo-tooltip" data-tooltip="{{tournament.tool_tip}}">
+                                        <div class="client-thumbnail">
+                                            <a href="{% url 'tournament:score-prediction-form' pk=tournament.id %}">
+                                                <img src="{{tournament.image.url}}" alt="image" height="80">
+                                                <h5>{{tournament.name}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+
+                        {% if request.user.is_authenticated %}
+
                         <div class="col-lg-3 col-md-4">
                             <div class="client-box ttm-box-view-logo">
                                 <div class="ttm-client-logo-tooltip" data-tooltip="Men's T20 International">
@@ -33,6 +55,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-3 col-md-4">
                             <div class="client-box ttm-box-view-logo">
                                 <div class="ttm-client-logo-tooltip" data-tooltip="Women's T20 International">
@@ -189,6 +212,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        {% endif %}
+
                     </div><!-- row end -->
                 </div>
             </section>

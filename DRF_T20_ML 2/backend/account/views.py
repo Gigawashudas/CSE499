@@ -127,29 +127,31 @@ class ProfileView(TemplateView):
         pass
 
 
-class ProfileForm(TemplateView):
+class ProfileFormView(TemplateView):
     def get(self, request, *args, **kwargs):
 
         profile_obj = Profile.objects.get(user=request.user)
-        profileForm = ProfileForm(instance=profile_obj)
+        profile_form = ProfileForm(instance=profile_obj)
 
         context = {
-            'profileForm': profileForm,
+            'form': profile_form,
         }
         return render(request, 'profile_form.html', context)
 
     def post(self, request, *args, **kwargs):
         if request.method == 'post' or request.method == 'POST':
-            form = ProfileForm(request.POST)
-            if form.is_valid():
-                form.save()
+            profile_obj = Profile.objects.get(user=request.user)
+            profile_form = ProfileForm(request.POST, instance=profile_obj)
+            if profile_form.is_valid():
+                profile_form.save()
                 messages.success(request, "Profile has been updated!")
-                return render(request, 'profile.html')
+                return redirect('account:profile')
             else:
-                form = ProfileForm()
+                profile_obj = Profile.objects.get(user=request.user)
+                profile_form = ProfileForm(instance=profile_obj)
 
-            context = {
-                'form': form
-            }
-            return render(request, 'profile_form.html', context)
+                context = {
+                    'form': profile_form
+                }
+                return render(request, 'profile_form.html', context)
 

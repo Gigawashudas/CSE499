@@ -87,7 +87,7 @@ class AddNewTournament(TemplateView):
     def post(self, request, *args, **kwargs):
         if request.user.user_type == 'superuser':
             if request.method == 'post' or request.method == 'POST':
-                form = TournamentForm(request.POST)
+                form = TournamentForm(request.POST, request.FILES)
                 if form.is_valid():
                     form.save()
                     messages.success(request, "Tournament added successfully!")
@@ -113,8 +113,12 @@ class TournamentUpdateView(TemplateView):
         if request.user.user_type == 'superuser':
             if request.method == 'post' or request.method == 'POST':
                 tournament = Tournament.objects.get(id=pk)
-                form = TournamentForm(request.POST, instance=tournament)
+                form = TournamentForm(request.POST, request.FILES, instance=tournament)
                 if form.is_valid():
+                    # os.remove(tournament.image.path)
+                    # os.remove(tournament.score_prediction_model.path)
+                    # os.remove(tournament.first_innings_win_prediction_model.path)
+                    # os.remove(tournament.second_innings_win_prediction_model.path)
                     form.save()
                     messages.success(request, "Tournament updated successfully!")
                     return redirect('dashboard:tournaments')
@@ -129,6 +133,10 @@ class TournamentDeleteView(TemplateView):
     def get(self, request, pk, *args, **kwargs):
         if request.user.user_type == 'superuser':
             tournament = Tournament.objects.get(id=pk)
+            os.remove(tournament.image.path)
+            os.remove(tournament.score_prediction_model.path)
+            os.remove(tournament.first_innings_win_prediction_model.path)
+            os.remove(tournament.second_innings_win_prediction_model.path)
             tournament.delete()
             messages.success(request, "Tournament deleted successfully!")
             return redirect('dashboard:tournaments')

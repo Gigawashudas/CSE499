@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Sign In || T-20 Predictor {% endblock title %}
+{% block title %} Update Profile || T-20 Predictor {% endblock title %}
 
 {% load static %}
 {% load crispy_forms_tags %}
@@ -7,7 +7,7 @@
 {% block body %}
 
     <!--site-main start-->
-    <div class="site-main" style="height: 100vh;">
+    <div class="site-main">
         <section class="ttm-row team-section ttm-bg ttm-bgimage-yes ttm-bgcolor-darkgrey h-100 clearfix">
             <div class="container">
                <div class="row">
@@ -16,7 +16,7 @@
                             <!-- section title -->
                             <div class="section-title with-desc text-center clearfix">
                                 <div class="title-header">
-                                    <a href="view-profile.html" class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor mb-20">View Profile</a>
+                                    <a href="{% url 'account:profile' %}" class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-skincolor mb-20">Back To Profile</a>
                                     <h2 class="title ttm-textcolor-skincolor" style="color: #0D3B4A;">Profile Update Form</h2>
                                 </div>
 
@@ -26,6 +26,7 @@
                                 {% csrf_token %}
 
                                 {{ form|crispy }}
+
                                 <input name="submit" type="submit" id="submit" class="submit" value="Edit Profile">
                             </form>
                         </div>
